@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailssByAngel.Data;
 using NailssByAngel.DTOs;
 using NailssByAngel.Models;
 
