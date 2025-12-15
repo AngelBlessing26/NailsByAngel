@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using 
+using NailssByAngel.Data;
+using NailssByAngel.DTOs;
+using NailssByAngel.Models;
 
 namespace NailBookingAPI.Controllers
 {
