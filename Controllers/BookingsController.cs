@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NailsByAngel.Data;
 using NailssByAngel.DTOs;
 using NailssByAngel.Models;
 

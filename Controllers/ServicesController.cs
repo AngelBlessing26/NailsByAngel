@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailssByAngel.Data;
+using NailsByAngel.Data;
 using NailssByAngel.Models;
 
 namespace NailssByAngel.Controllers

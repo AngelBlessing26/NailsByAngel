@@ -1,23 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailssByAngel.Data;
+using NailBookingAPI.Controllers;
+using NailsByAngel.Data;
 
 namespace NailssByAngel.Controllers
 {
     [ApiController]
     [Route("api/clients")]
-    public class ClientsController : ControllerBase
+    public class ClientsCocntroller(ApiContext context) : ControllerBase
     {
-        private readonly ApiContext _context;
-
-        public ClientsController(ApiContext context)
-        {
-            _context = context;
-        }
+        private readonly ApiContext context = context;
 
         [HttpGet]
         public IActionResult GetClients()
         {
-            return Ok(_context.Clients);
+            return Ok(context.Clients);
         }
     }
 }

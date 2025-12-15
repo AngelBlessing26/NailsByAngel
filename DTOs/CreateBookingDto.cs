@@ -11,5 +11,6 @@
         public string AppointmentTime { get; set; }
 
         public int ServiceId { get; set; }
+        public int ClientId { get; internal set; }
     }
 }
