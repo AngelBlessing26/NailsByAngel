@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailBookingAPI.Controllers;
-using NailsByAngel.Data;
+using NailssByAngel.Controllers;
+using NailssByAngel.Data;
 
 namespace NailssByAngel.Controllers
 {

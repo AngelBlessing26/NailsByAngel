@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailsByAngel.Data;
+using NailssByAngel.Data;
 using NailssByAngel.DTOs;
 using NailssByAngel.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,49 +18,34 @@ namespace NailBookingAPI.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public IActionResult CreateBooking(Booking booking)
+        {
+            _context.Bookings.Add(booking);
+            _context.SaveChanges();
+            return Ok(booking);
+        }
+
         [HttpGet]
         public IActionResult GetBookings()
         {
-            var bookings = _context.Bookings
-                .Include(b => b.Client)
-                .Include(b => b.Service)
-                .Select(b => new BookingResponseDto
-                {
-                    BookingId = b.Id,
-                    ClientName = b.Client.Name,
-                    ServiceName = b.Service.Name,
-                    AppointmentDate = b.AppointmentDate
-                });
-
-            return Ok(bookings);
-        }
-
-        [HttpPost]
-        public IActionResult CreateBooking(CreateBookingDto dto)
-        {
-            var booking = new Booking
-            {
-                ClientId = dto.ClientId,
-                ServiceId = dto.ServiceId,
-                AppointmentDate = dto.AppointmentDate
-            };
-
-            _context.Bookings.Add(booking);
-            _context.SaveChanges();
-
-            return Ok(booking);
+            return Ok(_context.Bookings.ToList());
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
             var booking = _context.Bookings.Find(id);
-            if (booking == null) return NotFound();
+
+            if (booking == null)
+            {
+                return NotFound();
+            }
 
             _context.Bookings.Remove(booking);
             _context.SaveChanges();
+
             return NoContent();
         }
-    }
 }
-
+    }

@@ -1,16 +1,17 @@
-﻿namespace NailssByAngel.Models
+﻿using NailssByAngel.Models;
+
+namespace NailssByAngel.Models
 {
     public class Client
     {
-        internal string Name;
-
         public int Id { get; set; }
 
-        public string FirstName { get; set; } = string.Empty;
-        public string LastName { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+
+        public List<Booking> Bookings { get; set; }
     }
 }

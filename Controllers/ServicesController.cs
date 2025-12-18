@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NailsByAngel.Data;
+using NailssByAngel.Data;
 using NailssByAngel.Models;
+using System.Data.Entity;
 
 namespace NailssByAngel.Controllers
 {
     [ApiController]
-    [Route("api/services")]
+    [Route("api/[controller]")]
     public class ServicesController : ControllerBase
     {
         private readonly ApiContext _context;
@@ -15,18 +16,21 @@ namespace NailssByAngel.Controllers
             _context = context;
         }
 
-        [HttpPost]
-        public IActionResult CreateService(Service service)
+        // GET: api/services
+        [HttpGet]
+        public async Task<IActionResult> GetServices()
         {
-            _context.Services.Add(service);
-            _context.SaveChanges();
-            return Ok(service);
+            return Ok(await _context.Services.ToListAsync());
         }
 
-        [HttpGet]
-        public IActionResult GetServices()
+        // POST: api/services
+        [HttpPost]
+        public async Task<IActionResult> CreateService(Service service)
         {
-            return Ok(_context.Services);
+            _context.Services.Add(service);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetServices), new { id = service.Id }, service);
         }
     }
 }
