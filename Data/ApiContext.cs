@@ -9,6 +9,7 @@ namespace NailssByAngel.Data
         public ApiContext(DbContextOptions<ApiContext> options)
             : base(options)
         {
+            Database.EnsureCreated(); 
         }
 
         public DbSet<Service> Services { get; set; }
