@@ -1,12 +1,9 @@
-﻿namespace NailssByAngel.Models
+﻿namespace NailssByAngel.DTOs
 {
-    public class Service
+    public class ServiceDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-
-        public ICollection<Booking> Bookings { get; set; }
-
     }
 }

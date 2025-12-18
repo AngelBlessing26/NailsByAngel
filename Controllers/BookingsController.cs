@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NailssByAngel.Data;
-using NailssByAngel.DTOs;
 using NailssByAngel.Models;
-using Microsoft.EntityFrameworkCore;
+
 
 
 namespace NailBookingAPI.Controllers
@@ -47,5 +46,5 @@ namespace NailBookingAPI.Controllers
 
             return NoContent();
         }
-}
     }
+}

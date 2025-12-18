@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NailssByAngel.Data;
 using NailssByAngel.Models;
-using System.Data.Entity;
 
 namespace NailssByAngel.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/services")]
     public class ServicesController : ControllerBase
     {
         private readonly ApiContext _context;
@@ -16,21 +15,52 @@ namespace NailssByAngel.Controllers
             _context = context;
         }
 
-        // GET: api/services
+        // READ (GET ALL)
         [HttpGet]
-        public async Task<IActionResult> GetServices()
+        public IActionResult GetServices()
         {
-            return Ok(await _context.Services.ToListAsync());
+            return Ok(_context.Services.ToList());
         }
 
-        // POST: api/services
+        // CREATE
         [HttpPost]
-        public async Task<IActionResult> CreateService(Service service)
+        public IActionResult CreateService(Service service)
         {
             _context.Services.Add(service);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
+            return Ok(service);
+        }
 
-            return CreatedAtAction(nameof(GetServices), new { id = service.Id }, service);
+        // UPDATE
+        [HttpPut("{id}")]
+        public IActionResult UpdateService(int id, Service updatedService)
+        {
+            var service = _context.Services.Find(id);
+            if (service == null)
+            {
+                return NotFound();
+            }
+
+            service.Name = updatedService.Name;
+            service.Price = updatedService.Price;
+
+            _context.SaveChanges();
+            return Ok(service);
+        }
+
+        // DELETE
+        [HttpDelete("{id}")]
+        public IActionResult DeleteService(int id)
+        {
+            var service = _context.Services.Find(id);
+            if (service == null)
+            {
+                return NotFound();
+            }
+
+            _context.Services.Remove(service);
+            _context.SaveChanges();
+            return NoContent();
         }
     }
 }

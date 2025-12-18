@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NailssByAngel.Models;
-using NailssByAngel.Models;
+
 
 namespace NailssByAngel.Data
 {
