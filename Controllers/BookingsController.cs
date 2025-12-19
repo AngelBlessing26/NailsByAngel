@@ -3,9 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using NailssByAngel.Data;
 using NailssByAngel.DTOs;
 using NailssByAngel.Models;
+using NailssByAngel.Auth;
+
 
 namespace NailssByAngel.Controllers
 {
+    [ApiKeyAuth]
+    [ApiController]
+    [Route("api/bookings")]
+    public class BookingsController : ControllerBase{}
+  }
     [ApiController]
     [Route("api/bookings")]
     public class BookingsController : ControllerBase
@@ -78,4 +85,5 @@ namespace NailssByAngel.Controllers
             return NoContent();
         }
     }
-}
+
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nails by Angel – Client App</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>Nails by Angel – Client</h1>
+
+    <button onclick="loadBookings()">View Bookings</button>
+
+    <pre id="output">Click the button to load bookings</pre>
+
+    <script>
+        function loadBookings() {
+            fetch("https://localhost:7235/api/servicesss", {
+                headers: {
+                    "X-API-KEY": "NAILS-API-KEY-123"
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Unauthorized or API error");
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("output").textContent =
+                    JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById("output").textContent =
+                    "Error: " + error.message;
+            });
+        }
+    </script>
+
+</body>
+</html>

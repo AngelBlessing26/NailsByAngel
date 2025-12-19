@@ -1,5 +1,6 @@
 {
-    "ConnectionStrings": {
-        "DefaultConnection": "Data Source=nails.db"
-    }
+  "ApiKey": "NAILS-API-KEY-123",
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=nails.db"
+  }
 }
